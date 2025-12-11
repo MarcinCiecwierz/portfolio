@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Typewriter from "./components/Typewriter";
 
 const App = () => {
   const [input, setInput] = useState("");
@@ -38,6 +39,7 @@ const App = () => {
         height: "100vh",
         width: "100vw",
         fontFamily: "monospace",
+        fontSize: 18,
         overflowY: "auto",
       }}
     >
@@ -49,6 +51,7 @@ const App = () => {
           borderRadius: "25px",
         }}
       >
+        {/* top bar */}
         <div
           style={{
             backgroundColor: "rgb(64, 64, 150)",
@@ -83,10 +86,12 @@ const App = () => {
             }}
           ></div>
         </div>
+
+        {/* text */}
         {history.map((item, index) => (
           <div key={index}>
             <div>$ {item.command}</div>
-            {item.output && <div>{item.output}</div>}
+            {item.output && <Typewriter text={item.output} />}
           </div>
         ))}
 
@@ -97,6 +102,15 @@ const App = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             autoFocus
+            style={{
+              background: "rgb(64, 64, 100)",
+              color: "white",
+              border: "none",
+              outline: "none",
+              fontFamily: "monospace",
+              fontSize: 18,
+              width: "80%",
+            }}
           />
         </div>
       </div>
