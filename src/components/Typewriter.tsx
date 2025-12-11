@@ -15,7 +15,7 @@ const Typewriter = ({ text }) => {
     return () => clearInterval(interval);
   }, [text]);
 
-  return <div>{visibleText}</div>;
+  return <pre>{visibleText}</pre>;
 };
 
 export default Typewriter;

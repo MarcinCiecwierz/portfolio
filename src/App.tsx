@@ -4,6 +4,7 @@ import Typewriter from "./components/Typewriter";
 const App = () => {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([]);
+  const [terminalTitle, setTerminalTitle] = useState("terminal");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -20,12 +21,15 @@ const App = () => {
   const runCommand = (cmd) => {
     switch (cmd) {
       case "help":
-        return "this is help";
+        setTerminalTitle("help");
+        return "help menu:\n" + "1 - one help\n" + "2 - two help\n";
 
       case "hi":
+        setTerminalTitle("hi");
         return "Hello"!;
 
       default:
+        setTerminalTitle("terminal");
         return `Command not found: ${cmd}`;
     }
   };
@@ -40,7 +44,6 @@ const App = () => {
         width: "100vw",
         fontFamily: "monospace",
         fontSize: 18,
-        overflowY: "auto",
       }}
     >
       <div
@@ -49,42 +52,57 @@ const App = () => {
           width: "90%",
           height: "90%",
           borderRadius: "25px",
+          overflowY: "auto",
         }}
       >
         {/* top bar */}
-        <div
-          style={{
-            backgroundColor: "rgb(64, 64, 150)",
-            borderTopLeftRadius: "25px",
-            borderTopRightRadius: "25px",
-            paddingLeft: 15,
-            display: "flex",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <div
             style={{
-              backgroundColor: "red",
-              borderRadius: "50px",
-              width: "16px",
-              height: "16px",
+              borderTopLeftRadius: "25px",
+              borderTopRightRadius: "25px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "8px 15px",
             }}
-          ></div>
+          >
+            <div
+              style={{
+                backgroundColor: "#ff5f57",
+                borderRadius: "50px",
+                width: "14px",
+                height: "14px",
+              }}
+            ></div>
+            <div
+              style={{
+                backgroundColor: "#ffbd2e",
+                borderRadius: "50px",
+                width: "14px",
+                height: "14px",
+              }}
+            ></div>
+            <div
+              style={{
+                backgroundColor: "#28c840",
+                borderRadius: "50px",
+                width: "14px",
+                height: "14px",
+              }}
+            ></div>
+          </div>
           <div
             style={{
-              backgroundColor: "yellow",
-              borderRadius: "50px",
-              width: "16px",
-              height: "16px",
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              pointerEvents: "none",
             }}
-          ></div>
-          <div
-            style={{
-              backgroundColor: "green",
-              borderRadius: "50px",
-              width: "16px",
-              height: "16px",
-            }}
-          ></div>
+          >
+            {terminalTitle}
+          </div>
         </div>
 
         {/* text */}
