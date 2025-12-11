@@ -99,6 +99,9 @@ const Terminal = ({ onClose }) => {
           height: "90%",
           borderRadius: "25px",
           overflowY: "auto",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          paddingLeft: "8px",
         }}
       >
         {/* top bar */}
@@ -114,12 +117,22 @@ const Terminal = ({ onClose }) => {
             }}
           >
             <div
+              id="close"
               onClick={onClose}
               style={{
                 backgroundColor: "#ff5f57",
                 borderRadius: "50px",
                 width: "14px",
                 height: "14px",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.08)";
+                e.currentTarget.style.opacity = "0.8";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.opacity = "1";
               }}
             ></div>
             <div
@@ -156,7 +169,12 @@ const Terminal = ({ onClose }) => {
         {history.map((item, index) => (
           <div key={index}>
             <div>$ {item.command}</div>
-            {item.output && <Typewriter text={item.output} />}
+            {item.output && (
+              <>
+                <Typewriter text={item.output} />
+                <br />
+              </>
+            )}
           </div>
         ))}
 
