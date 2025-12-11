@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Typewriter from "./components/Typewriter";
 
 const App = () => {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([]);
   const [terminalTitle, setTerminalTitle] = useState("terminal");
+  const terminalRef = useRef(null);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -22,11 +23,23 @@ const App = () => {
     switch (cmd) {
       case "help":
         setTerminalTitle("help");
-        return "help menu:\n" + "1 - one help\n" + "2 - two help\n";
+        return "help menu:\n about me\n skills\n projects\n contact\n github\n";
 
       case "hi":
         setTerminalTitle("hi");
         return "Hello"!;
+
+      case "about me":
+        setTerminalTitle("about me");
+        return "My name is Marcin and I am backend developer specifying in Spring Boot framework.";
+
+      case "skills":
+        setTerminalTitle("skills");
+        return "Key programming skills:\n Java, Spring Boot\nScripting/frontend skills:\n Python, JavaScript, React\nDatabase:\n Postgresql\nCloud:\n Azure appliaction deployment\nCI/CD:\n Github Actions";
+
+      case "projects":
+        setTerminalTitle("projects");
+        return "A prompt manager - page in which a user can save their prompts and test in different AI\nstack used: Spring Boot, React, Postgresql, Auth0, OpenRouter\nhttps://prompt-manager-f3lls-projects.vercel.app/";
 
       default:
         setTerminalTitle("terminal");
@@ -34,8 +47,15 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [history]);
+
   return (
     <div
+      ref={terminalRef}
       style={{
         display: "flex",
         justifyContent: "center",
@@ -48,7 +68,7 @@ const App = () => {
     >
       <div
         style={{
-          backgroundColor: "rgb(64, 64, 100)",
+          backgroundColor: "#252a33",
           width: "90%",
           height: "90%",
           borderRadius: "25px",
@@ -121,7 +141,7 @@ const App = () => {
             onKeyDown={handleKeyDown}
             autoFocus
             style={{
-              background: "rgb(64, 64, 100)",
+              background: "#252a33",
               color: "white",
               border: "none",
               outline: "none",

@@ -15,7 +15,16 @@ const Typewriter = ({ text }) => {
     return () => clearInterval(interval);
   }, [text]);
 
-  return <pre>{visibleText}</pre>;
+  return (
+    <pre
+      style={{
+        whiteSpace: "pre-wrap",
+        wordBreak: "break-word",
+      }}
+    >
+      {visibleText}
+    </pre>
+  );
 };
 
 export default Typewriter;
