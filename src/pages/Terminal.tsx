@@ -11,8 +11,6 @@ const Terminal = ({ onClose }) => {
     },
   ]);
   const [terminalTitle, setTerminalTitle] = useState("terminal");
-  const terminalRef = useRef(null);
-  const [modalUrl, setModalUrl] = useState(null);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -30,7 +28,7 @@ const Terminal = ({ onClose }) => {
     switch (cmd) {
       case "help":
         setTerminalTitle("help");
-        return "help menu:\n about me\n skills\n projects\n contact\n github\n";
+        return "help menu:\n about me\n skills\n projects\n contact\n github\n experience";
 
       case "hi":
         setTerminalTitle("hi");
@@ -66,21 +64,18 @@ const Terminal = ({ onClose }) => {
         setTerminalTitle("contact");
         return `Contact me: <a target="_blank" href="mailto:marcin.ciecwierz@proton.me">marcin.ciecwierz@proton.me</a>`;
 
+      case "experience":
+        setTerminalTitle("experience");
+        return `I have been working for a year now (Dec 2024 - now) at IMDIK - Polska Akademia Nauk, as a Software Developer. I have developed projects that involves frontend, backend and data analysis combined from different sources to help team visualize data on various levels.<br/>Stack that I am using is: Spring Boot, React, Postgresql, Python (for data analysis)`;
+
       default:
         setTerminalTitle("terminal");
         return `Command not found: ${cmd}`;
     }
   };
 
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
-  }, [history]);
-
   return (
     <div
-      ref={terminalRef}
       style={{
         display: "flex",
         justifyContent: "center",
@@ -89,6 +84,7 @@ const Terminal = ({ onClose }) => {
         width: "100vw",
         fontFamily: "monospace",
         fontSize: 18,
+        scrollBehavior: "smooth",
       }}
     >
       <div
@@ -100,19 +96,31 @@ const Terminal = ({ onClose }) => {
           overflowY: "auto",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
-          paddingLeft: "8px",
+          scrollBehavior: "smooth",
         }}
       >
         {/* top bar */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 100,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#252a33",
+            padding: "18px 15px",
+            borderTopLeftRadius: "25px",
+            borderTopRightRadius: "25px",
+          }}
+        >
           <div
             style={{
-              borderTopLeftRadius: "25px",
-              borderTopRightRadius: "25px",
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 15px",
+              gap: "8px",
+              position: "absolute",
+              left: "15px",
             }}
           >
             <div
@@ -166,7 +174,12 @@ const Terminal = ({ onClose }) => {
 
         {/* text */}
         {history.map((item, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            style={{
+              paddingLeft: "8px",
+            }}
+          >
             <div>$ {item.command}</div>
             {item.output && (
               <>
