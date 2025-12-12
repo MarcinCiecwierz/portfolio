@@ -51,7 +51,7 @@ const Terminal = ({ onClose }) => {
           `A prompt manager - page in which a user can save their prompts and test in different AI.<br/>Stack used: Spring Boot, React, Postgresql, Auth0, OpenRouter<br/><a target="_blank" href="https://prompt-manager-f3lls-projects.vercel.app/">https://prompt-manager-f3lls-projects.vercel.app/</a><br/>` +
           `<br/>Transport web appliaction - as my thesis project I have developed fleet management appliaction integrating GPS tracking and connection with external marketplace system.<br/>Stack used: Spring Boot, React, Postgresql<br/>` +
           `<br/>Task tracker - application in which users can magane their tasks, manage assigment of team.<br/>Stack: Spring Boot, React, Postgresql<br/><a target="_blank" href="https://task-tracker-f3lls-projects.vercel.app/">https://task-tracker-f3lls-projects.vercel.app/</a><br/>` +
-          `<br/>Package simualtion - appliaction to help me understand how Kafka works<br/>Stack used: Spring Boot, Kafka, Postgresql, React.<br/>Documentation is available at: <a target="_blank" href="https://github.com/MarcinCiecwierz/Package-simulation-kafka">https://github.com/MarcinCiecwierz/Package-simulation-kafka</a><br/>`
+          `<br/>Package simualtion - appliaction to help me understand how Kafka works<br/>Stack used: Spring Boot, Kafka, Postgresql, React.<br/>Documentation is available at: <a target="_blank" href="https://github.com/MarcinCiecwierz/Package-simulation-kafka">https://github.com/MarcinCiecwierz/Package-simulation-kafka</a>`
         );
 
       case "github":

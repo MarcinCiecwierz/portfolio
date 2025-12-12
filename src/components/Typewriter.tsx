@@ -6,9 +6,10 @@ const Typewriter = ({ text, speed = 20 }) => {
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
-      setVisibleText(text.slice(0, i));
-      i++;
+      const current = text.slice(0, i) + "&lt;";
+      setVisibleText(current);
 
+      i++;
       if (i > text.length) clearInterval(interval);
     }, speed);
 

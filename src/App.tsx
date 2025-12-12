@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TerminalButton from "./components/TerminalButton";
 import Typewriter from "./components/Typewriter";
 
@@ -34,7 +34,7 @@ const App = () => {
       <div
         style={{
           backgroundColor: "black",
-          width: "450px",
+          width: "470px",
           height: "auto",
           fontSize: "18px",
           fontFamily: "monospace",
