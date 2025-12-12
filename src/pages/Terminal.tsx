@@ -12,6 +12,7 @@ const Terminal = ({ onClose }) => {
   ]);
   const [terminalTitle, setTerminalTitle] = useState("terminal");
   const terminalRef = useRef(null);
+  const [modalUrl, setModalUrl] = useState(null);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -45,27 +46,25 @@ const Terminal = ({ onClose }) => {
 
       case "projects":
         setTerminalTitle("projects");
+
         return (
-          "A prompt manager - page in which a user can save their prompts and test in different AI\nstack used: Spring Boot, React, Postgresql, Auth0, OpenRouter\nhttps://prompt-manager-f3lls-projects.vercel.app/\n" +
-          " \n" +
-          "Transport web appliaction - as my thesis project I have developed fleet management appliaction integrating GPS tracking and connection with external marketplace system.\nStack used: Spring Boot, React, Postgresql\n" +
-          " \n" +
-          "Task tracker - application in which users can magane their tasks, manage assigment of team.\nStack: Spring Boot, React, Postgresql\nhttps://task-tracker-f3lls-projects.vercel.app/\n" +
-          " \n" +
-          "Package simualtion - appliaction to help me understand how Kafka works\nStack used: Spring Boot, Kafka, Postgresql, React.\nDocumentation is available at: https://github.com/MarcinCiecwierz/Package-simulation-kafka"
+          `A prompt manager - page in which a user can save their prompts and test in different AI.<br/>Stack used: Spring Boot, React, Postgresql, Auth0, OpenRouter<br/><a target="_blank" href="https://prompt-manager-f3lls-projects.vercel.app/">https://prompt-manager-f3lls-projects.vercel.app/</a><br/>` +
+          `<br/>Transport web appliaction - as my thesis project I have developed fleet management appliaction integrating GPS tracking and connection with external marketplace system.<br/>Stack used: Spring Boot, React, Postgresql<br/>` +
+          `<br/>Task tracker - application in which users can magane their tasks, manage assigment of team.<br/>Stack: Spring Boot, React, Postgresql<br/><a target="_blank" href="https://task-tracker-f3lls-projects.vercel.app/">https://task-tracker-f3lls-projects.vercel.app/</a><br/>` +
+          `<br/>Package simualtion - appliaction to help me understand how Kafka works<br/>Stack used: Spring Boot, Kafka, Postgresql, React.<br/>Documentation is available at: <a target="_blank" href="https://github.com/MarcinCiecwierz/Package-simulation-kafka">https://github.com/MarcinCiecwierz/Package-simulation-kafka</a><br/>`
         );
 
       case "github":
         setTerminalTitle("github");
-        return "My github:\nhttps://github.com/MarcinCiecwierz";
+        return 'My github: <a target="_blank" href="https://github.com/MarcinCiecwierz">https://github.com/MarcinCiecwierz</a>';
 
       case "git":
         setTerminalTitle("github");
-        return "My github:\nhttps://github.com/MarcinCiecwierz";
+        return 'My github: <a target="_blank" href="https://github.com/MarcinCiecwierz">https://github.com/MarcinCiecwierz</a>';
 
       case "contact":
         setTerminalTitle("contact");
-        return "Contact me:\nmarcin.ciecwierz@proton.me";
+        return `Contact me: <a target="_blank" href="mailto:marcin.ciecwierz@proton.me">marcin.ciecwierz@proton.me</a>`;
 
       default:
         setTerminalTitle("terminal");

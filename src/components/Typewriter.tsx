@@ -17,13 +17,9 @@ const Typewriter = ({ text, speed = 20 }) => {
 
   return (
     <div
-      style={{
-        whiteSpace: "pre-wrap",
-        wordBreak: "break-word",
-      }}
-    >
-      {visibleText}
-    </div>
+      style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}
+      dangerouslySetInnerHTML={{ __html: visibleText }}
+    />
   );
 };
 
