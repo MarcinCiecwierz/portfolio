@@ -28,7 +28,7 @@ const Terminal = ({ onClose }) => {
     switch (cmd) {
       case "help":
         setTerminalTitle("help");
-        return "help menu:\n about me\n skills\n projects\n contact\n github\n experience";
+        return "help menu:\n school\n experience\n projects\n skills\n about me\n contact\n github";
 
       case "hi":
         setTerminalTitle("hi");
@@ -67,6 +67,10 @@ const Terminal = ({ onClose }) => {
       case "experience":
         setTerminalTitle("experience");
         return `I have been working for a year now (Dec 2024 - now) at IMDIK - Polska Akademia Nauk, as a Software Developer. I have developed projects that involves frontend, backend and data analysis combined from different sources to help team visualize data on various levels.<br/>Stack that I am using is: Spring Boot, React, Postgresql, Python (for data analysis)`;
+
+      case "school":
+        setTerminalTitle("school");
+        return `I have bachelor title at Computer Science from Polish Japanese Academy of Technology with a specialization of data bases with emphasis on software development<br>Right now I am doing masters at Politechnika Warszawska`;
 
       default:
         setTerminalTitle("terminal");
