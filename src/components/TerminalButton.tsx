@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Terminal from "../pages/terminal";
 import Typewriter from "./Typewriter";
+import terminalImg from "./terminal.png";
 
 const TerminalButton = () => {
   const [showTerminal, setShowTerminal] = useState(false);
@@ -44,7 +45,7 @@ const TerminalButton = () => {
           {!animate && (
             <>
               <img
-                src="/terminal.png"
+                src={terminalImg}
                 alt="Terminal icon"
                 style={{
                   width: "200px",
